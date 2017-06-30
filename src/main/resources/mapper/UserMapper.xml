@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.wenhao.mapper.UserMapper">
+    <insert id="addUserBasic" parameterType="io.wenhao.model.UserModel">
+        INSERT INTO t_user_basic (id, name, password, salt, email)
+        VALUES (#{user.id}, #{user.name}, #{user.password}, #{user.salt}, #{user.email})
+    </insert>
+
+    <insert id="addUserInfo">
+        INSERT INTO t_user_info (id, school, grade, experience, sex)
+        VALUES (#{user.id}, #{user.school}, #{user.grade}, #{user.experience}, #{user.sex});
+    </insert>
+
+    <update id="updateUser">
+        UPDATE music.t_user_basic
+        SET name = #{user.name}, password = #{user.password}, salt = #{user.salt}
+        WHERE id = '11111';
+    </update>
+
+    <delete id="deleteUserBasic">
+        DELETE FROM t_user_basic
+        WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteUserInfo">
+        DELETE FROM t_user_info
+        WHERE id = #{id}
+    </delete>
+
+    <select id="getUser" resultType="io.wenhao.model.UserModel">
+        SELECT *
+        FROM t_user_basic
+        WHERE id = #{id}
+    </select>
+
+    <select id="login" resultType="io.wenhao.model.UserModel">
+        SELECT
+            t.email,
+            t.name,
+            t.id
+        FROM t_user_basic t
+        WHERE name = #{user.name} AND password = #{password}
+    </select>
+
+    <select id="getUserByEmail" resultType="string">
+        SELECT id
+        FROM t_user_basic
+        WHERE email = #{email};
+    </select>
+</mapper>

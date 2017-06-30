@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../favicon.ico">
+
+    <title>注册</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="lib/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/register.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <div id="mainForm" class="form-horizontal">
+        <div id="inputEmailGroup" class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label sr-only">邮箱</label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control" id="inputEmail" placeholder="邮箱" autofocus>
+            </div>
+        </div>
+        <div id="inputNameGroup" class="form-group">
+            <label for="inputName" class="col-sm-2 control-label sr-only">姓名</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputName" placeholder="姓名">
+            </div>
+        </div>
+        <div id="inputPasswordGroup" class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label sr-only">密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="inputPassword" placeholder="密码">
+            </div>
+        </div>
+        <div id="inputSchoolGroup" class="form-group">
+            <label for="inputSchool" class="col-sm-2 control-label sr-only">院校</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputSchool" placeholder="院校">
+            </div>
+        </div>
+        <div id="inputExperienceGroup" class="form-group">
+            <label for="inputExperience" class="col-sm-2 control-label sr-only">学习经历</label>
+            <div class="col-sm-8">
+                <textarea id="inputExperience" class="form-control" rows="3" placeholder="学习经历"></textarea>
+            </div>
+        </div>
+        <div id="selectSexGroup" class="form-group">
+            <label for="selectSex" class="col-sm-2 control-label sr-only">性别</label>
+            <div class="col-sm-8">
+                <select id="selectSex" class="form-control">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <button id="register" class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="lib/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="lib/js-md5-master/md5.min.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</body>
+</html>
