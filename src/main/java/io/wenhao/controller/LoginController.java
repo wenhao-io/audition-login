@@ -9,12 +9,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 @RestController
+@RequestMapping(value = "/api/login")
 public class LoginController {
     @Resource
     ILoginService loginService;
 
     @ResponseStatus(HttpStatus.OK) // 响应状态，HTTP 状态码 200
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public UserModel login(HttpSession session, @RequestParam String name, @RequestParam String password) {
         return null;
     }

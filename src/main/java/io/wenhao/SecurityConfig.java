@@ -12,7 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         // 设置不拦截规则
-        web.ignoring().antMatchers("/**/*.js", "/**/*.css", "/**/*.html");
+        web.ignoring().antMatchers("/**/*.js", "/**/*.css", "/**/*.html", "/img/**", "/**/favicon.ico");
     }
 
     @Override
@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login.html")
+                .loginPage("/login.html").permitAll()
                 .and()
                 .httpBasic();
     }
