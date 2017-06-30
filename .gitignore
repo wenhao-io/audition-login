@@ -1,5 +1,8 @@
 /music-login.iml
-.gradle/
-.idea/
+/audition-login.iml
+
 build/
-out/
+/out/
+/build/
+/.idea/
+/.gradle/
