@@ -9,7 +9,7 @@ public interface UserMapper {
 
     public UserModel getUser(@Param("id") String id);
 
-    public String getUserByEmail(@Param("email") String email);
+    public UserModel getUserByEmail(@Param("email") String email);
 
     public Integer addUserBasic(@Param("user") UserModel userModel);
 

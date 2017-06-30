@@ -15,6 +15,16 @@ public class UserModel {
     private String school;
     private String grade;
     private String experience;
+    private RoleModel role;
+
+    public RoleModel getRole() {
+        return role;
+    }
+
+    public UserModel setRole(RoleModel role) {
+        this.role = role;
+        return this;
+    }
 
     public String getSex() {
         return sex;

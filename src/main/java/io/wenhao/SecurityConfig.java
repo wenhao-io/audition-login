@@ -1,18 +1,25 @@
 package io.wenhao;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import io.wenhao.service.impl.SpringUserDetailsService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new SpringUserDetailsService();
+    }
+
+    @Override
     public void configure(WebSecurity web) throws Exception {
-        // 设置不拦截规则
-        web.ignoring().antMatchers("/**/*.js", "/**/*.css", "/**/*.html", "/img/**", "/**/favicon.ico");
+        web.ignoring().antMatchers("/js/**", "/css/**", "/**/*.html", "/img/**");
     }
 
     @Override
@@ -27,10 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER");
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService());
     }
 }

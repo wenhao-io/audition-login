@@ -44,9 +44,13 @@
         WHERE name = #{user.name} AND password = #{password}
     </select>
 
-    <select id="getUserByEmail" resultType="string">
-        SELECT id
-        FROM t_user_basic
+    <select id="getUserByEmail" resultType="io.wenhao.model.UserModel">
+        SELECT
+            t.id,
+            t.email,
+            t.name,
+            t.password
+        FROM t_user_basic t
         WHERE email = #{email};
     </select>
 </mapper>
