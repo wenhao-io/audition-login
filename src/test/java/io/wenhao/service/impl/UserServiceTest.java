@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -20,11 +19,11 @@ public class UserServiceTest {
     private IUserService service;
 
     @Test
-    @Transactional
+//    @Transactional
     public void addUser() throws Exception {
         User user = new User();
         user.setPassword("1234567890");
-        user.setEmail("qiaowenhao@gmail.com");
+        user.setEmail("adskqqwy111");
         user.setName("乔文昊");
         user.setExperience("经验丰富");
         user.setGrade("一年级");

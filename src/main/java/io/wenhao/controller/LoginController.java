@@ -22,7 +22,7 @@ public class LoginController {
     private ILoginService loginService;
 
     @Resource
-     private IUserService userService;
+    private IUserService userService;
 
     /**
      * 登录接口
@@ -34,14 +34,11 @@ public class LoginController {
     @ResponseStatus(HttpStatus.OK) // 响应状态，HTTP 状态码 200
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, @RequestParam String name, @RequestParam String password) {
-
         //获取session对象用来存储用户信息
         HttpSession session = request.getSession();
         User user = userService.getUserByName(name);
 
-        if (user == null) {
-            return "1";
-        }
+        if (user == null) return "1";
 
         try {
             //使用shiro来验证用户信息是否正确

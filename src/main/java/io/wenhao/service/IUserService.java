@@ -3,7 +3,7 @@ package io.wenhao.service;
 import io.wenhao.model.User;
 
 public interface IUserService {
-    public User getUser(String id);
+    public User getUser(Integer id);
 
     public User getUserByName(String userName);
 

@@ -18,7 +18,7 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable String id) {
-        return new ResponseEntity<>(userService.getUser(id), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.getUser(Integer.parseInt(id)), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)

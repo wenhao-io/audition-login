@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.UUID;
 
 @Service
 public class UserService implements IUserService {
@@ -21,7 +20,7 @@ public class UserService implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public User getUser(String id) {
+    public User getUser(Integer id) {
         return userMapper.getUser(id);
     }
 
@@ -36,7 +35,6 @@ public class UserService implements IUserService {
         User user2 = userMapper.getUserByName(user.getUserName());
         if (user2 != null) return 0;
 
-        user.setId(UUID.randomUUID().toString());
         SecureRandomNumberGenerator secureRandom = new SecureRandomNumberGenerator();
         String salt = secureRandom.nextBytes(3).toHex(); //一个Byte占两个字节，此处生成的3字节，字符串长度为6
         String password = new Md5Hash(user.getPassword(), salt, 2).toString();
