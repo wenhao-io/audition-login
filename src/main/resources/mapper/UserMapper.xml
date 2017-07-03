@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.wenhao.mapper.UserMapper">
-    <insert id="addUserBasic" parameterType="io.wenhao.model.UserModel">
-        INSERT INTO t_user_basic (id, name, password, salt, email)
+    <insert id="addUserBasic" parameterType="io.wenhao.model.User">
+        INSERT INTO t_user_basic (id, name, password, salt, user_name)
         VALUES (#{user.id}, #{user.name}, #{user.password}, #{user.salt}, #{user.email})
     </insert>
 
@@ -29,13 +29,13 @@
         WHERE id = #{id}
     </delete>
 
-    <select id="getUser" resultType="io.wenhao.model.UserModel">
+    <select id="getUser" resultType="io.wenhao.model.User">
         SELECT *
         FROM t_user_basic
         WHERE id = #{id}
     </select>
 
-    <select id="login" resultType="io.wenhao.model.UserModel">
+    <select id="login" resultType="io.wenhao.model.User">
         SELECT
             t.email,
             t.name,
@@ -44,13 +44,14 @@
         WHERE name = #{user.name} AND password = #{password}
     </select>
 
-    <select id="getUserByEmail" resultType="io.wenhao.model.UserModel">
+    <select id="getUserByName" resultType="io.wenhao.model.User">
         SELECT
             t.id,
             t.email,
+            t.user_name,
             t.name,
             t.password
         FROM t_user_basic t
-        WHERE email = #{email};
+        WHERE user_name = #{userName};
     </select>
 </mapper>

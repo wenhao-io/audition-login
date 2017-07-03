@@ -1,6 +1,6 @@
 package io.wenhao.service.impl;
 
-import io.wenhao.model.UserModel;
+import io.wenhao.model.User;
 import io.wenhao.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,16 +22,16 @@ public class UserServiceTest {
     @Test
     @Transactional
     public void addUser() throws Exception {
-        UserModel userModel = new UserModel();
-        userModel.setPassword("1234567890");
-        userModel.setEmail("qiaowenhao@gmail.com");
-        userModel.setName("乔文昊");
-        userModel.setExperience("经验丰富");
-        userModel.setGrade("一年级");
-        userModel.setSchool("某个学校");
-        userModel.setSex("男");
+        User user = new User();
+        user.setPassword("1234567890");
+        user.setEmail("qiaowenhao@gmail.com");
+        user.setName("乔文昊");
+        user.setExperience("经验丰富");
+        user.setGrade("一年级");
+        user.setSchool("某个学校");
+        user.setSex("男");
 
-        Integer count = service.addUser(userModel);
+        Integer count = service.addUser(user);
         assertEquals((long) (count), 1L);
     }
 

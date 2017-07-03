@@ -1,25 +1,25 @@
 package io.wenhao.mapper;
 
-import io.wenhao.model.UserModel;
+import io.wenhao.model.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface UserMapper {
 
-    public UserModel getUser(@Param("id") String id);
+    public User getUser(@Param("id") String id);
 
-    public UserModel getUserByEmail(@Param("email") String email);
+    public User getUserByName(@Param("userName") String userName);
 
-    public Integer addUserBasic(@Param("user") UserModel userModel);
+    public Integer addUserBasic(@Param("user") User user);
 
-    public Integer addUserInfo(@Param("user") UserModel userModel);
+    public Integer addUserInfo(@Param("user") User user);
 
-    public UserModel updateUser(@Param("user") UserModel userModel);
+    public User updateUser(@Param("user") User user);
 
     public Integer deleteUserBasic(@Param("id") String id);
 
     public Integer deleteUserInfo(@Param("id") String id);
 
-    public UserModel login(@Param("name") String name, @Param("password") String password);
+    public User login(@Param("name") String name, @Param("password") String password);
 }

@@ -1,13 +1,15 @@
 package io.wenhao.service;
 
-import io.wenhao.model.UserModel;
+import io.wenhao.model.User;
 
 public interface IUserService {
-    public UserModel getUser(String id);
+    public User getUser(String id);
 
-    public Integer addUser(UserModel userModel);
+    public User getUserByName(String userName);
 
-    public UserModel updateUser(UserModel userModel);
+    public Integer addUser(User user);
+
+    public User updateUser(User user);
 
     public Integer deleteUser(String id);
 }

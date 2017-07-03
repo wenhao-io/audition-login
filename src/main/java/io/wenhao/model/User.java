@@ -4,10 +4,14 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Component
-public class UserModel {
+public class User implements Serializable {
     private String id;
     private String name;
+    private String userName;
     private String password;
     private String salt;
     private String email;
@@ -15,22 +19,32 @@ public class UserModel {
     private String school;
     private String grade;
     private String experience;
-    private RoleModel role;
 
-    public RoleModel getRole() {
+    public String getUserName() {
+        return userName;
+    }
+
+    public User setUserName(String userName) {
+        this.userName = userName;
+        return this;
+    }
+
+    public List<Role> getRole() {
         return role;
     }
 
-    public UserModel setRole(RoleModel role) {
+    public User setRole(List<Role> role) {
         this.role = role;
         return this;
     }
+
+    private List<Role> role;
 
     public String getSex() {
         return sex;
     }
 
-    public UserModel setSex(String sex) {
+    public User setSex(String sex) {
         this.sex = sex;
         return this;
     }
@@ -39,7 +53,7 @@ public class UserModel {
         return school;
     }
 
-    public UserModel setSchool(String school) {
+    public User setSchool(String school) {
         this.school = school;
         return this;
     }
@@ -48,7 +62,7 @@ public class UserModel {
         return grade;
     }
 
-    public UserModel setGrade(String grade) {
+    public User setGrade(String grade) {
         this.grade = grade;
         return this;
     }
@@ -57,7 +71,7 @@ public class UserModel {
         return experience;
     }
 
-    public UserModel setExperience(String experience) {
+    public User setExperience(String experience) {
         this.experience = experience;
         return this;
     }
@@ -66,7 +80,7 @@ public class UserModel {
         return id;
     }
 
-    public UserModel setId(String id) {
+    public User setId(String id) {
         this.id = id;
         return this;
     }
@@ -75,7 +89,7 @@ public class UserModel {
         return name;
     }
 
-    public UserModel setName(String name) {
+    public User setName(String name) {
         this.name = name;
         return this;
     }
@@ -84,7 +98,7 @@ public class UserModel {
         return password;
     }
 
-    public UserModel setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -93,7 +107,7 @@ public class UserModel {
         return salt;
     }
 
-    public UserModel setSalt(String salt) {
+    public User setSalt(String salt) {
         this.salt = salt;
         return this;
     }
@@ -102,7 +116,7 @@ public class UserModel {
         return email;
     }
 
-    public UserModel setEmail(String email) {
+    public User setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -113,10 +127,10 @@ public class UserModel {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserModel userModel = (UserModel) o;
+        User user = (User) o;
 
         return new EqualsBuilder()
-                .append(email, userModel.email)
+                .append(email, user.email)
                 .isEquals();
     }
 

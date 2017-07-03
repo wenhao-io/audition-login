@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.wenhao.mapper.LoginMapper">
-    <select id="login" resultType="io.wenhao.model.UserModel">
+    <select id="login" resultType="io.wenhao.model.User">
         SELECT
             t.email,
             t.name,

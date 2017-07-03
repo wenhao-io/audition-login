@@ -1,7 +1,7 @@
 package io.wenhao.service.impl;
 
 import io.wenhao.mapper.UserMapper;
-import io.wenhao.model.UserModel;
+import io.wenhao.model.User;
 import io.wenhao.service.ILoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +18,8 @@ public class LoginService implements ILoginService {
     private UserMapper userMapper;
 
     @Override
-    public UserModel login(HttpSession session, String name, String password) {
-        UserModel user = userMapper.login(name, password);
+    public User login(HttpSession session, String name, String password) {
+        User user = userMapper.login(name, password);
         if (user != null) {
             session.getId();
             session.setAttribute("id", user.getId());

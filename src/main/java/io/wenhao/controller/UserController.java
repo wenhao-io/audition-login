@@ -2,7 +2,7 @@ package io.wenhao.controller;
 
 import io.wenhao.common.Error;
 import io.wenhao.exception.UserConflictException;
-import io.wenhao.model.UserModel;
+import io.wenhao.model.User;
 import io.wenhao.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,19 +22,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<?> addUser(@RequestBody UserModel userModel) {
-        int count = userService.addUser(userModel);
+    public ResponseEntity<?> addUser(@RequestBody User user) {
+        int count = userService.addUser(user);
         if (count == 0) {
-            Error error = new Error(0, userModel.getEmail());
+            Error error = new Error(0, user.getEmail());
             return new ResponseEntity<>(error, HttpStatus.CONFLICT);
         }
-        return new ResponseEntity<>(userModel, HttpStatus.CREATED);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT) // 响应状态，HTTP 状态码 204
     @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public UserModel updateUser(@RequestBody UserModel userModel) {
-        return userService.updateUser(userModel);
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT) // 响应状态，HTTP 状态码 204
