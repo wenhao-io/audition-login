@@ -23,8 +23,9 @@ public class UserServiceTest {
     public void addUser() throws Exception {
         User user = new User();
         user.setPassword("1234567890");
-        user.setEmail("adskqqwy111");
+        user.setEmail("qiaowenhao@gmail.com");
         user.setName("乔文昊");
+        user.setUserName("wenhao");
         user.setExperience("经验丰富");
         user.setGrade("一年级");
         user.setSchool("某个学校");
@@ -62,4 +63,19 @@ public class UserServiceTest {
     public void register() throws Exception {
     }
 
+    @Test
+    public void getUserByUserName() throws Exception {
+        User user = new User();
+        user.setPassword("1234567890");
+        user.setEmail("qiaowenhao@gmail.com");
+        user.setName("乔文昊");
+        user.setUserName("wenhao");
+        user.setExperience("经验丰富");
+        user.setGrade("一年级");
+        user.setSchool("某个学校");
+        user.setSex("男");
+
+        User result = service.getUserByName("wenhao");
+        assertEquals(user, result);
+    }
 }

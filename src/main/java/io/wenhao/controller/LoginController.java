@@ -4,6 +4,7 @@ import io.wenhao.model.User;
 import io.wenhao.service.ILoginService;
 import io.wenhao.service.IUserService;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -12,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -33,33 +33,20 @@ public class LoginController {
      */
     @ResponseStatus(HttpStatus.OK) // 响应状态，HTTP 状态码 200
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(HttpServletRequest request, @RequestParam String name, @RequestParam String password) {
-        //获取session对象用来存储用户信息
-        HttpSession session = request.getSession();
-        User user = userService.getUserByName(name);
-
-        if (user == null) return "1";
-
+    public String login(@RequestParam String name, @RequestParam String password) {
         try {
-            //使用shiro来验证用户信息是否正确
             UsernamePasswordToken token = new UsernamePasswordToken(name, password);
-
             Subject currentUser = SecurityUtils.getSubject();
-            //记录用户访问的页面
             token.setRememberMe(true);
-            //验证角色和权限
             currentUser.login(token);
-            //在session中放入用户信息
-            session.setAttribute("user", user);
+//            Session session = currentUser.getSession();
         } catch (LockedAccountException e) {//账号被锁定
             return "3";
         } catch (IncorrectCredentialsException e) {//密码不正确
             return "2";
+        } catch (AccountException e) {//账号不存在
+            return "1";
         }
-
-        //用户登录时候首先验证用户信息（使用加盐处理）
-        //验证用户是否多次登录被锁
-        //验证用户登录次数
         return "0";
     }
 

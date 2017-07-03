@@ -5,8 +5,8 @@
 <mapper namespace="io.wenhao.mapper.UserMapper">
     <insert id="addUserBasic" parameterType="io.wenhao.model.User" useGeneratedKeys="true"
             keyProperty="id" keyColumn="id">
-        INSERT INTO t_user_basic (name, password, salt, user_name)
-        VALUES (#{name}, #{password}, #{salt}, #{email})
+        INSERT INTO t_user_basic (name, password, salt, user_name, email)
+        VALUES (#{name}, #{password}, #{salt}, #{userName}, #{email})
     </insert>
 
     <insert id="addUserInfo">
@@ -37,12 +37,7 @@
     </select>
 
     <select id="getUserByName" resultType="io.wenhao.model.User">
-        SELECT
-            t.id,
-            t.email,
-            t.user_name,
-            t.name,
-            t.password
+        SELECT t.*
         FROM t_user_basic t
         WHERE user_name = #{userName};
     </select>
