@@ -12,7 +12,6 @@ buildscript {
 
 plugins {
     id 'org.springframework.boot' version '1.5.4.RELEASE'
-    id 'java'
 }
 
 jar {
@@ -34,6 +33,5 @@ dependencies {
     compile("mysql:mysql-connector-java:5.1.42")
 
     compile('org.apache.commons:commons-lang3:3.6')
-
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
